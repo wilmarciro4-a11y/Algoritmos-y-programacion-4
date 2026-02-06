@@ -21,7 +21,7 @@ class Lista:
 
 
 
-
+// Ejemplo de uso de la clase Lista con apuntador al principio
 class Nodo:
     def __init__(self, documento, nombre):
         self.documento = documento
