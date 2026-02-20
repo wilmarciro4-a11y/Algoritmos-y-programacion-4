@@ -54,3 +54,24 @@ def sumar_lista(lista):
         return sumar_lista(lista[1:]) + lista[0]
 
 print("Suma de la lista:", sumar_lista(listas))        
+
+       
+def suma_digito(n):
+        if n==0:
+            return 0
+        else:
+            return (n%10)+suma_digito(n//10)
+print(suma_digito(1503))            
+
+def busqueda_binaria_recursiva(lista, objetivo, izquierda=0, derecha=None):
+        if derecha is None:
+            derecha = len(lista) - 1
+        if izquierda > derecha:
+            return -1
+        medio = (izquierda + derecha) // 2
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            return busqueda_binaria_recursiva(lista, objetivo, medio + 1, derecha)
+        else:
+            return busqueda_binaria_recursiva(lista, objetivo, izquierda, medio - 1)
