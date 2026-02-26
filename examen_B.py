@@ -1,3 +1,29 @@
+# Programa de ejemplo usando ListaTareas
+if __name__ == "__main__":
+    tareas = ListaTareas()
+    tareas.agregar("Comprar leche", 2)
+    tareas.agregar("Estudiar para parcial", 5)
+    tareas.agregar("Llamar al médico", 4)
+    tareas.agregar("Ver serie", 1)
+    tareas.agregar("Entregar proyecto", 5)
+    tareas.agregar("Hacer ejercicio", 3)
+
+    print("\n📋 Lista de tareas (ordenada por prioridad):")
+    tareas.mostrar()
+
+    print("\n🔢 Tareas urgentes (prioridad 5):", tareas.contar_pendientes(5))
+
+    tareas.completar("Comprar leche")
+    tareas.completar("Ver serie")
+    tareas.completar("Estudiar para parcial")
+
+    print("\n🚨 Tareas urgentes pendientes:")
+    urgentes = tareas.obtener_urgentes()
+    urgentes.mostrar()
+
+    print("\n🗑️ Eliminando tareas completadas...")
+    tareas.limpiar_completadas()
+    tareas.mostrar()
 def completar(self, descripcion):
                             actual = self.inicio
                             while actual:

@@ -1,11 +1,32 @@
-                    def mostrar(self):
+# Programa de ejemplo usando Historial
+if __name__ == "__main__":
+    historial = Historial()
+    historial.visitar("https://www.google.com/search", "Búsqueda Google", 15)
+    historial.visitar("https://www.youtube.com/watch", "Video YouTube", 300)
+    historial.visitar("https://www.github.com/repo", "GitHub Repo", 180)
+    historial.visitar("https://www.youtube.com/home", "YouTube Home", 45)
+    historial.visitar("https://www.google.com/maps", "Google Maps", 5)
+
+    print("\n📋 Historial inicial:")
+    historial.mostrar()
+
+    print("\n⏱️ Tiempo total:", historial.tiempo_total(), "segundos")
+
+    print("\n🔍 Páginas de YouTube:")
+    youtube = historial.buscar_por_dominio("youtube")
+    youtube.mostrar()
+
+    print("\n🗑️ Eliminando páginas < 30 segundos...")
+    historial.eliminar_rapidas(30)
+    historial.mostrar()
+def mostrar(self):
                         actual = self.inicio
                         i = 1
                         while actual:
                             print(f"{i}. {actual.titulo} | {actual.url} | {actual.tiempo} seg")
                             actual = actual.siguiente
                             i += 1
-                def eliminar_rapidas(self, x):
+def eliminar_rapidas(self, x):
                     def recursivo(nodo):
                         if nodo is None:
                             return None
@@ -14,7 +35,7 @@
                         nodo.siguiente = recursivo(nodo.siguiente)
                         return nodo
                     self.inicio = recursivo(self.inicio)
-            def buscar_por_dominio(self, texto):
+def buscar_por_dominio(self, texto):
                 nueva = Historial()
                 def recursivo(nodo):
                     if nodo is None:
@@ -24,13 +45,13 @@
                         nueva.visitar(nodo.url, nodo.titulo, nodo.tiempo)
                 recursivo(self.inicio)
                 return nueva
-        def tiempo_total(self):
+def tiempo_total(self):
             def recursivo(nodo):
                 if nodo is None:
                     return 0
                 return nodo.tiempo + recursivo(nodo.siguiente)
             return recursivo(self.inicio)
-    def visitar(self, url, titulo, tiempo):
+def visitar(self, url, titulo, tiempo):
         nueva_pagina = Pagina(url, titulo, tiempo)
         nueva_pagina.siguiente = self.inicio
         self.inicio = nueva_pagina
