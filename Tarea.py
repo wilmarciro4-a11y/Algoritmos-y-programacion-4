@@ -1,16 +1,12 @@
 import heapq
 import time
 
-# Cada jugador se representa como una tupla:
-# (timestamp, jugador_id, nivel)
-
 class MatchmakingHeap:
 	def __init__(self):
 		self.cola = []  # heap de jugadores
-		self.contador = 0  # para simular el tiempo de espera
+		self.contador = 0  
 
 	def agregar_jugador(self, jugador_id, nivel):
-		# Usamos un contador incremental para simular el tiempo de llegada
 		self.contador += 1
 		heapq.heappush(self.cola, (self.contador, jugador_id, nivel))
 
@@ -27,7 +23,6 @@ class MatchmakingHeap:
 					mejor_pareja = (timestamp, id, lvl)
 					mejor_pareja_idx = idx
 		if mejor_pareja:
-			# Eliminar la pareja del heap
 			self.cola.pop(mejor_pareja_idx)
 			heapq.heapify(self.cola)
 			return mejor_pareja[1], mejor_pareja[2]

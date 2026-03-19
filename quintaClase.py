@@ -503,5 +503,10 @@ def mostrar_cola(pacientes):
 mostrar_cola(pacientes)
 
 
-""" un programa que me permita programar tareas y me diga cual es la siguiente
-tarea a realizar segun su calendario"""
+""" ultimo ejemplo de la clase  """
+import re
+
+texto = "Python es genial"
+
+resultados = re.match("Python", texto)
+print(resultados.group())  # Imprime "Python"   
