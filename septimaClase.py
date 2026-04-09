@@ -225,10 +225,11 @@ def similitud_jaccard(texto1, texto2):
     conjunto2 = texto_a_conjunto(texto2)
     return jaccard(conjunto1, conjunto2)
 
-texto1 = "El gato está en el tejado"
-texto2 = "El gato se subió al tejado"
-indice_similitud = similitud_jaccard(texto1, texto2)
-print(f"Índice de similitud Jaccard: {indice_similitud:.2f}")
-if indice_similitud > 0.6:
-    print("Los textos son muy similares, podrían ser copiados.")
-    
+texto_a_conjunto("El gato está en la casa")
+texto_a_conjunto("La casa del gato es grande")
+similitud = similitud_jaccard("El gato está en la casa", "La casa del gato es grande")
+print("Similitud Jaccard:", similitud)
+print("¿Los textos son similares?", similitud > 0.6)
+print("Conjunto del texto 1:", texto_a_conjunto("El gato está en la casa"))
+print("Conjunto del texto 2:", texto_a_conjunto("La casa del gato es grande"))
+
